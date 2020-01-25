@@ -1,0 +1,7 @@
+.idea/.gitignore
+.idea/dataSources.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/restaurante.iml
+migrations/

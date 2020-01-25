@@ -1,0 +1,48 @@
+{% extends 'catalog/pizzas/home.html' %}
+{% load humanize %}
+{% block content %}
+    <div class="row">
+        {% for pizza in object_list %}
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    {{ pizza.name }}
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ pizza.price|intcomma }} €
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <a href="{% url 'catalog_pizzas_update' pizza.id %}"
+                                   class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="{% url 'catalog_pizzas_delete' pizza.id %}"
+                                   class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="card mb-4 py-3 border-bottom-warning">
+                <div class="card-body">
+                    Please Add an Pizza
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <a href="{% url 'catalog_pizzas_create' %}" class="btn btn-primary btn-icon-split">
+            <span class="icon text-gray-600">
+                <i class="fas fa-arrow-right"></i>
+            </span>
+            <span class="text">Add new Pizza</span>
+        </a>
+    </div>
+{% endblock %}
